@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -37,5 +38,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
+Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
