@@ -11,5 +11,12 @@ class Product extends Model
         'name', 'description', 'price', 'quantity'
     ];
 
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)
+                    ->withPivot('quantity', 'price')
+                    ->withTimestamps();
+    }
+
     use HasFactory;
 }
