@@ -25,8 +25,9 @@ const Index = ({auth}) => {
               <Link
                     tabIndex="1"
                     className="py-2 text-sm text-black hover:underline"
+                    href={route("users.orders", record.id)}
                 >
-                    Orders
+                    View Orders
                 </Link>
           ),
         },
