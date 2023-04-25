@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Transaction;
@@ -77,6 +78,8 @@ class OrderController extends Controller
         $transaction->status = 'pending';
         $transaction->transaction_id = uniqid(); // Example transaction ID
         $transaction->save();
+
+        event(new OrderCreated($order));
 
         return Redirect::route('orders.index');
     }
