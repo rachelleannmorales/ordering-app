@@ -23,9 +23,13 @@ The application used laravel/breeze to install react and intertiaJs. I use
     - Order created email - user will receive an email after successful order creation
 
 ## Decision-Making :thinking:
-One of the key decisions made for the delivery of this project is dockerization. The project being dockerized made it easier to deploy without the reviewer having to install resources like the database and be agnostic in any operating system. The other libraries I have chosen is due to my familiarity to those.
+One of the key decisions made for the delivery of this project is dockerization since I can't deploy it in a public host environment. The project being dockerized made it easier to deploy without the reviewer having to install resources like the database and be agnostic in any operating system. The other libraries I have chosen is due to my familiarity to those.
 
 ## Installation :gear:
 1. Clone this repository
-3. Install dependencies with `composer install`
-3. Start the application with `./vendor/bin/sail up`
+2. Run `composer install`
+3. Run `./vendor/bin/sail up`
+4. Run `./vendor/bin/sail php artisan migrate`
+5. Run `./vendor/bin/sail php artisan db:seed`
+6. Run `./vendor/bin/sail npm install`
+7. Run `./vendor/bin/sail npm run dev`

@@ -1,9 +1,9 @@
 @component('mail::message')
 # Order Created
 
-Hi {{ $user->name }},
+Hi {{ $order->user->name }},
 
-Your order ({{ $order->id }}) has been created!
+Your order#{{ $order->id }} has been created!
 
 Here's a summary of your order:
 

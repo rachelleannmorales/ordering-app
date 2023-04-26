@@ -79,6 +79,7 @@ class OrderController extends Controller
         $transaction->transaction_id = uniqid(); // Example transaction ID
         $transaction->save();
 
+        $order = Order::with(['user', 'products'])->firstWhere('id',$order->id);
         event(new OrderCreated($order));
 
         return Redirect::route('orders.index');

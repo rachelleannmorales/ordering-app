@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,10 +17,9 @@ class OrderCreatedEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        public Order $order,
+    ) {}
 
     /**
      * Get the message envelope.
@@ -37,7 +37,10 @@ class OrderCreatedEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.order-created',
+            markdown: 'emails.order-created',
+            with: [
+                'order' => $this->order,
+            ]
         );
     }
 

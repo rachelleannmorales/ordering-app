@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\OrderCreated;
+use App\Mail\OrderCreatedEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Mail;
@@ -22,6 +23,6 @@ class SendOrderCreatedEmail
      */
     public function handle(OrderCreated $event): void
     {
-         Mail::to($event->user->email)->send(new WelcomeEmail($event->user));
+        Mail::to($event->order->user->email)->send(new OrderCreatedEmail($event->order));
     }
 }

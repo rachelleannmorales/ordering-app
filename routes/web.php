@@ -5,6 +5,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
+use App\Mail\OrderCreatedEmail;
+use App\Mail\WelcomeEmail;
+use App\Models\Order;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -42,7 +46,7 @@ Route::middleware('auth')->group(function () {
 Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
 Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 Route::resource('orders', OrderController::class)->middleware(['auth', 'verified']);
-Route::get('/users/{user}/orders/', [OrderController::class, 'userOrders'])->name('users.orders')->middleware(['auth', 'verified']);;
-Route::get('/orders/{order}/transactions', [TransactionController::class, 'index'])->name('orders.transactions')->middleware(['auth', 'verified']);;
+Route::get('/users/{user}/orders/', [OrderController::class, 'userOrders'])->name('users.orders')->middleware(['auth', 'verified']);
+Route::get('/orders/{order}/transactions', [TransactionController::class, 'index'])->name('orders.transactions')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
