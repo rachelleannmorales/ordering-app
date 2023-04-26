@@ -90,7 +90,7 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         return Inertia::render('Order/Show', [
-            'order' => $order->with(['user', 'transactions', 'products'])->firstWhere('id',$order->id)->toArray()
+            'order' => $order->with(['user', 'products'])->firstWhere('id',$order->id)->toArray()
         ]);
     }
 

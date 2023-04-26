@@ -59,7 +59,7 @@ const Show = ({auth}) => {
             <div className="container mx-auto py-2">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-5">
-                        <TransactionsTable data={order['transactions']} />
+                        <TransactionsTable order={order} />
                     </div>
                 </div>
             </div>

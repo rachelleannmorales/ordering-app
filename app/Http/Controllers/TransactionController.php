@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Order $order)
     {
-        //
+        $transactions = Transaction::where('order_id',$order->id)->paginate(10);
+        return response()->json($transactions);
     }
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,6 @@ Route::resource('products', ProductController::class)->middleware(['auth', 'veri
 Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 Route::resource('orders', OrderController::class)->middleware(['auth', 'verified']);
 Route::get('/users/{user}/orders/', [OrderController::class, 'userOrders'])->name('users.orders')->middleware(['auth', 'verified']);;
+Route::get('/orders/{order}/transactions', [TransactionController::class, 'index'])->name('orders.transactions')->middleware(['auth', 'verified']);;
 
 require __DIR__.'/auth.php';
